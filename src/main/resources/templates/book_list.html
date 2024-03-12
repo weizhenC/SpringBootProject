@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <title>Book Management System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:replace="~{common2 :: myheader}"></div>
+<hr>
+
+<!--class="container my-2"-->
+<div class="container my-2" >
+
+  <h1>Book List</h1>
+
+  <a th:href = "@{/showNewBookForm}" class="btn btn-primary btn-sm mb-3">Add Book</a>
+  <!--    border="1" class = "table table-striped table-responsive-md"-->
+  <table class="table table-striped table-responsive-md">
+<!--    <thead class="table-dark">-->
+    <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+
+      <th>Category</th>
+        <th>Author</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book: ${listBooks}">
+
+      <td th:text="${book.ISBN}"></td>
+      <td th:text="${book.title}"></td>
+<!--        <td th:text="${book.author.authorName}"></td>-->
+<!--        <td th:text="${book.category.categoryId}"></td>-->
+
+        <td th:text="${book.category.categoryName}"></td>
+
+<!--        <td th:text="${book.author.authorName}"></td>-->
+        <td th:text="${book.author?.authorName}"></td>
+<!--        <td></td>-->
+
+
+
+
+
+        <th>
+        <a th:href="@{/showFormForUpdateBook/{bookId}(bookId=${book.id})}" class="btn btn-primary btn-sm">Update
+        </a>
+        <!--        <a th:href="@{/showFormForUpdate/{id}(id=${account.id})}">-->
+        <!--          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">-->
+        <!--          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>-->
+        <!--        </svg>-->
+        <!--        </a>-->
+        <a th:href="@{/deleteBook/{bookId}(bookId=${book.id})}" class="btn btn-danger btn-sm"
+           onclick="if(!(confirm('Are you sure you want to delete the account?'))) return false">Delete</a>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+  <!--    paginate the list  -->
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Management System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous">
+
+</head>
+<body>
+<div th:replace="~{common2 :: myheader}"></div>
+<br>
+<div class="container">
+  <br>
+  <h1>Book Management System</h1>
+
+  <!--    <button type="submit" class="btn btn-primary col-2"> Save Account</button>-->
+  <h3 class="h4 md-4">Save Book</h3>
+  <br>
+
+
+  <form action="#" th:action="@{/saveBook}" th:object="${book}" method="POST">
+    <input type="text" th:field="*{id}" class="form-control mb-4 w-25" hidden placeholder="id">
+
+    <input type="text" th:field="*{ISBN}" placeholder="ISBN" class="form-control mb-4 w-2"
+           required="true">
+
+    <input type="text" th:field="*{title}" placeholder="title" class="form-control mb-4 w-2"
+           required="true">
+
+    <input type="text" th:field="*{category.categoryId}" placeholder="category id" class="form-control mb-4 w-2"
+           required="true">
+
+    <input type="text" th:field="*{author.authorId}" placeholder="author id" class="form-control mb-4 w-2"
+           required="true">
+
+
+<!--    <label  class="col-form-label col-sm-4">Category:</label>-->
+<!--        <select th:field="*{category}" class="form-control" required="true">-->
+<!--          <th:block th:each="cat : ${categories}">-->
+<!--            <option th:text="${cat.categoryName}" th:value="${aut.authorId}"></option>-->
+<!--          </th:block>-->
+<!--        </select>-->
+
+<!--    <input type="text" th:field="*{author}" placeholder="title" class="form-control mb-4 w-2"-->
+<!--           required="true">-->
+
+<!--    <select th:field="*{author}" class="form-control" required="true">-->
+<!--      <th:block th:each="aut : ${authors}">-->
+<!--        <option th:text="${aut.authorId}" th:value="${aut.authorId}"></option>-->
+<!--      </th:block>-->
+<!--    </select>-->
+
+
+
+    <br>
+
+    <button type="submit" class="btn btn-info col-2"> Save Book</button>
+  </form>
+
+  <a th:href="@{/books}"> Back to Book List</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+        crossorigin="anonymous"></script>
+</body>
+</html>

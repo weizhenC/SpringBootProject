@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Author Management System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous">
+
+</head>
+<body>
+<div th:replace="~{common2 :: myheader}"></div>
+<br>
+<div class="container">
+  <br>
+  <h1>Author Management System</h1>
+
+  <!--    <button type="submit" class="btn btn-primary col-2"> Save Account</button>-->
+  <h3 class="h4 md-4">Save Author</h3>
+  <br>
+
+
+  <form action="#" th:action="@{/saveAuthor}" th:object="${author}" method="POST">
+    <input type="text" th:field="*{authorId}" class="form-control mb-4 w-25" hidden placeholder="id">
+
+    <input type="text" th:field="*{authorName}" placeholder="Author Name" class="form-control mb-4 w-2"
+           required="true">
+
+    <input type="text" th:field="*{nationality}" placeholder="Nationality" class="form-control mb-4 w-2"
+           required="true">
+
+
+<!--    <input type="text" th:field="*{books}" placeholder="Account Type" class="form-control mb-4 w-2"-->
+<!--           required="true">-->
+
+    <button type="submit" class="btn btn-info col-2"> Save Author</button>
+  </form>
+
+  <a th:href="@{/authors}"> Back to Author List</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+        crossorigin="anonymous"></script>
+</body>
+</html>

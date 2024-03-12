@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Management System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+<div th:replace="~{common1 :: myheader}"></div>
+<hr>
+
+<!--class="container my-2"-->
+<div class="container my-2" >
+
+<!--  <div th:if="${param.error}">Invalid username and password.</div>-->
+<!--  <div th:if="${param.logout}">You have been logged out.</div>-->
+<!--  <form th:action="@{/login}" method="post">-->
+<!--    <div>-->
+<!--      <label> User Name : <input type="text" name="username" /> </label>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div>-->
+<!--      <label> Password: <input type="password" name="password" /> </label>-->
+<!--    </div>-->
+<!--    <div><input type="submit" value="登录" /></div>-->
+<!--  </form>-->
+
+
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-6 col-md-offset-3">
+
+        <h1> User Login Page </h1>
+        <form th:action="@{/login}" method="post">
+
+          <!-- error message -->
+          <div th:if="${param.error}">
+            <div class="alert alert-danger">Invalid username or
+              password.</div>
+          </div>
+
+          <!-- logout message -->
+          <div th:if="${param.logout}">
+            <div class="alert alert-info">You have been logged out.</div>
+          </div>
+
+          <div class = "form-group">
+            <label for ="username"> Username </label> :
+            <input type="text" class = "form-control" id ="username" name = "username"
+                   placeholder="Enter Email ID" autofocus="autofocus">
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="password">Password</label>: <input type="password"
+                                                           id="password" name="password" class="form-control"
+                                                           placeholder="Enter Password" />
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" name="login-submit" id="login-submit"
+                       class="form-control btn btn-primary" value="Log In" />
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group">
+						<span>New user? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+        crossorigin="anonymous"></script>
+</body>
+</html>
